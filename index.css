@@ -1,22 +1,65 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 html {
-    height: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {
-    height: 100%;
+    margin: 0px;
+    background-color: #F6F6F6;
 }
 
-.main {
-    height: 100%;
-    background-color: aqua;
+/*Navigation*/
+.navigation {
+    position: fixed;
+
+    top: 0px;
+    width: 100%;
+
+    background-color: #E1E1E1;
 }
 
-.week {
-    height: 60%;
-    background-color: aquamarine;
+.navigation ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+    margin: 0px;
+    padding: 0px;
+
+    list-style: none;
+    text-align: center;
+    
 }
 
-.options {
-    height: 30%;
-    background-color: beige;
+/*Wrapper*/
+.wrapper {
+    width: 500px;
+
+    margin: auto;
+    margin-top: 20%;
+
+    padding: 1%;
+    background-color: #ffffff;
+
+    border-radius: 10%;
+}
+
+.wrapper .title {
+    text-align: center;
+}
+
+.wrapper .content ul {
+    padding: 5%;
+}
+
+.wrapper .content li {
+    list-style: none;
+
+
+    margin: 3%;
+}
+
+.wrapper .content input:checked + label {
+    color: gray;
+    text-decoration: line-through;
 }
