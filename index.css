@@ -2,64 +2,162 @@
 
 html {
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+
+    height: 100%;
 }
 
 body {
     margin: 0px;
-    background-color: #F6F6F6;
+    background-color: #FBFBFD;
+
+    height: 400%;
+    color: #333333;
+}
+
+ul {
+    padding: 0px;
 }
 
 /*Navigation*/
 .navigation {
     position: fixed;
-
-    top: 0px;
     width: 100%;
+    top: 0px;
 
-    background-color: #E1E1E1;
+    background-color: #333333;
 }
 
 .navigation ul {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-
-    margin: 0px;
-    padding: 0px;
-
     list-style: none;
     text-align: center;
-    
+
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+
+    margin: 0px;
+    align-items: center;
 }
 
-/*Wrapper*/
-.wrapper {
-    width: 500px;
+.navigation li {
+    text-align: center;
+    color: #ffffff;
+}
 
+.navigation #logo {
+    font-size: 1.5rem;
+    margin: 0px;
+}
+
+/*Main*/
+.main {
+    width: 80%;
     margin: auto;
     margin-top: 20%;
 
-    padding: 1%;
-    background-color: #ffffff;
+    text-align: center;
 
+    background-color: #F6F6F6;
+    border-radius: 10%;
+
+    padding: 1%;
+}
+
+.main p {
+    width: 70%;
+    margin: auto;
+
+    border-bottom: 0.1rem solid #86868B;
+}
+
+.main .title {
+    color: #1D1D1F;
+}
+
+.main .content .to-do-list {
+    width: 70%;
+    margin: auto;
+    padding: 3%;
+
+    list-style: none;
+    text-align: left;
+}
+
+.main .content li {
+    border-bottom: 0.1rem solid rgba(0,0,0,0.1);
+    padding: 2%;
+}
+
+.main .content li input[type="checkbox"]  {
+    display: none;
+}
+
+.main .content li input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.main .content li input[type="checkbox"] + label:before {
+    content: ' ';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    margin: -2px 8px 0 0;
+    text-align: center;
+    vertical-align: middle;
+    background: #F6F6F6;
+    border: 0.15rem solid rgba(51,51,51,0.5);
+    border-radius: 2%;
+}
+
+.main .content li input[type="checkbox"]:checked + label:before {
+    content: '\2714';
+    color:gray;
+    border: 0.15rem solid rgba(51,51,51,0.2);
+}
+
+.main .content li input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.main .content .add-items {
+    width: 70%;
+    display: block;
+    margin: auto;
+    border-bottom: 0.1rem solid rgba(0,0,0,0.1);
+}
+
+.main .content .add-items input {
+    width: 100%;
+    font-size: 1rem;
+    color: #333333;
+    border: none;
+    background: #F6F6F6;
+    margin: 1%;
+}
+
+.main .content .add-items input:focus {
+    outline: 0.1rem solid rgba(0,0,0,0.1); 
+}
+
+.main .content .options {
+    padding: 2%;
+}
+
+.main .content .options .clearList {
+    border: 0.1rem solid rgba(0,0,0,0.1);
+    background-color: #F6F6F6;
+    color: #333333;
     border-radius: 10%;
 }
 
-.wrapper .title {
-    text-align: center;
+/*Responsive*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
 }
+@media screen and (max-width: 767px) {
 
-.wrapper .content ul {
-    padding: 5%;
-}
-
-.wrapper .content li {
-    list-style: none;
-
-
-    margin: 3%;
-}
-
-.wrapper .content input:checked + label {
-    color: gray;
-    text-decoration: line-through;
 }

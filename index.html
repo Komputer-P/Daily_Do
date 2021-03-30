@@ -14,36 +14,39 @@
             <ul>
                 <li><p>오늘</p></li>
                 <li><p>주간</p></li>
+                <li><p id="logo">&pi;</p></li>
                 <li><p>월간</p></li>
                 <li><p>설정</p></li>
             </ul>
         </nav>
 
-        <div class="wrapper">
+        <div class="main">
             <div class="title">
                 <h2>오늘 할 일</h2>
             </div>
+            <p></p>
             <div class="content">
-                <ul>
-                    <li>
-                        <input type="checkbox" id="1">
-                        <label for="1">대학 강의 듣기</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="2">
-                        <label for="1">앱 개발하기</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="3">
-                        <label for="1">로스트아크 즐기기</label>
-                    </li>
+                <ul class="to-do-list">
+                    <li>Loading...</li>
                 </ul>
+                <form class="add-items">
+                    <input type="text" name="item" placeholder="할 일 적기" required>
+                    <input type="submit" value="추가">
+                </form>
+                <div class="options">
+                    <input type="button" class="clearList" value="모두 지우기">
+                </div>
             </div>
         </div>
+
+        <script src="index.js"></script>
     </body>
 </html>
 
 <!--
 ● Daily Do : 생산성 앱/웹, 개인 용도로, 매일(요일)마다 하는 일들을 날짜가 지나면 자동으로 체크방식 형식으로 To Do List에 올려주고, To Do list 위젯으로 오늘 할 일 체크하면서 쓸 수 있는 앱, 그 전날 사용자가 지정한 시간에 내일 일정 알림을 줘서 내일 일정 확인받고 최종 일정 내일 To Do로 Push. (필요한 것: 위젯 만들기, 요일별 To Do List 만들기, 날짜가 바뀌면 자동으로 체크박스 To Do list, 위젯 생성, 사용자가 원하는 시간에 최종 일정 confirm 받기 설정 등, 할 일들을 Tree 형식으로 세부 할 일들도 체크할 수 있도록)
 + 뽀모도로 기법 활용해서 시간 재는 기능
++ localstorage 참조
++ 백엔드와 연결, AWS 활용해서 웹사이트 생성
++ 로그인 후 DB에 데이터 저장
 -->
