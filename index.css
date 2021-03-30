@@ -22,6 +22,7 @@ ul {
 /*Navigation*/
 .navigation {
     position: fixed;
+    z-index: 3;
     width: 100%;
     top: 0px;
 
@@ -51,6 +52,8 @@ ul {
 
 /*Main*/
 .main {
+    position: relative;
+    z-index: 1;
     width: 80%;
     margin: auto;
     margin-top: 20%;
@@ -127,16 +130,26 @@ ul {
     width: 70%;
     display: block;
     margin: auto;
-    border-bottom: 0.1rem solid rgba(0,0,0,0.1);
 }
 
-.main .content .add-items input {
+.main .content .add-items input[type="text"] {
     width: 100%;
     font-size: 1rem;
     color: #333333;
     border: none;
     background: #F6F6F6;
     margin: 1%;
+    border-bottom: 0.1rem solid rgba(0,0,0,0.1);
+}
+
+.main .content .add-items input[type="submit"] {
+    border: 0.1rem solid rgba(0,0,0,0.1);
+    background-color: #F6F6F6;
+    color: #333333;
+    border-radius: 10%;
+    margin-top: 2%;
+
+    font-size: 1rem;
 }
 
 .main .content .add-items input:focus {
@@ -144,7 +157,7 @@ ul {
 }
 
 .main .content .options {
-    padding: 2%;
+    padding: 1%;
 }
 
 .main .content .options .clearList {
@@ -152,6 +165,8 @@ ul {
     background-color: #F6F6F6;
     color: #333333;
     border-radius: 10%;
+    
+    font-size: 1rem;
 }
 
 /*Responsive*/
