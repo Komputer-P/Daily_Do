@@ -4,7 +4,7 @@ var items = JSON.parse(localStorage.getItem('items')) || [];
 const toDoList = document.querySelector('.to-do-list');
 const addItems = document.querySelector('.add-items');
 
-const clearList = document.querySelector('.clearList');
+const dateDisplay = document.querySelector('.date');
 
 //FUNCTIONS
 function addItem(e) {
@@ -32,32 +32,45 @@ function populateList(lists, toDoList) {
             <li>
                 <input type="checkbox" data-index="${i}" id="item${i}" ${list.done ? "checked" : ""} />
                 <label for="item${i}">${list.content}</label>
+                <span class="remove" data-index="${i}">X</span>
             </li>
             `;
         }).join('');
     }
 }
 
-function clearAll() {
-    items = [];
-    localStorage.setItem('items', JSON.stringify(items));
-    populateList(items, toDoList);
-}
-
-function toggleDone(e) {
-    if(!e.target.matches('input')) return;
+function toggle(e) {
+    if(e.target.matches('input')) {
+        const el = e.target;
+        const index = el.dataset.index;
     
-    const el = e.target;
-    const index = el.dataset.index;
+        items[index].done = !items[index].done;
+    }
+    else if(e.target.matches('span')) {
+        const el = e.target;
+        const index = el.dataset.index;
+        
+        items.splice(index,1);
+    }
+    else {
+        return;
+    }
 
-    items[index].done = !items[index].done;
     localStorage.setItem('items',JSON.stringify(items));
     populateList(items, toDoList);
 }
 
+function displayDate() {
+    var today = new Date();
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    var day = week[today.getDay()];
+
+    dateDisplay.innerHTML = `오늘은 <br> ${today.getMonth()+1}월 ${today.getDate()}일 ${day}요일`;
+}
+
 //EVENT LISTENERS
 addItems.addEventListener('submit',addItem);
-clearList.addEventListener('click',clearAll);
-toDoList.addEventListener('click',toggleDone);
+toDoList.addEventListener('click',toggle);
 
+displayDate();
 populateList(items, toDoList);
