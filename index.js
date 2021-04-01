@@ -1,5 +1,56 @@
 //ELEMETNS
+var today_date = JSON.parse(localStorage.getItem('today_date')) || [];
 var items = JSON.parse(localStorage.getItem('items')) || [];
+var week = JSON.parse(localStorage.getItem('weeks')) || [];
+week = {
+    sun : [
+        { content: "독서: 2030 축의 전환", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false },
+        { content: "동아리: 웹 백엔드 스터디", done: false }
+    ],
+    mon : [
+        { content: "운동: 맨몸운동", done: false },
+        { content: "독서: 2030 축의 전환", done: false },
+        { content: "대학: 강의 수강", done: false },
+        { content: "대학: 과제/프로젝트 수행", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ],
+    tue : [
+        { content: "대학: 강의 수강", done: false },
+        { content: "대학: 과제/프로젝트 수행", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ],
+    wed : [
+        { content: "운동: 맨몸운동", done: false },
+        { content: "독서: 2030 축의 전환", done: false },
+        { content: "대학: 강의 수강", done: false },
+        { content: "대학: 과제/프로젝트 수행", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ],
+    thu : [
+        { content: "대학: 강의 수강", done: false },
+        { content: "대학: 과제/프로젝트 수행", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ],
+    fri : [
+        { content: "운동: 맨몸운동", done: false },
+        { content: "독서: 2030 축의 전환", done: false },
+        { content: "대학: 강의 수강", done: false },
+        { content: "대학: 과제/프로젝트 수행", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ],
+    sat : [
+        { content: "독서: 2030 축의 전환", done: false },
+        { content: "프로그래밍: 알고리즘 풀이", done: false },
+        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+    ]
+}
 
 const toDoList = document.querySelector('.to-do-list');
 const addItems = document.querySelector('.add-items');
@@ -68,9 +119,68 @@ function displayDate() {
     dateDisplay.innerHTML = `오늘은 <br> ${today.getMonth()+1}월 ${today.getDate()}일 ${day}요일`;
 }
 
+
+//ADD WEEK LIST
+function listInit() {
+    var today = new Date();
+    var day = today.getDay();
+
+    switch(day) {
+        case 0: //일요일
+            for(var i=0; i<week.sun.length; i++) {
+                items.push(week.sun[i]);
+            }
+            break;
+        case 1: //월요일
+            for(var i=0; i<week.mon.length; i++) {
+             items.push(week.mon[i]);
+            }
+            break;
+        case 2: //화요일
+            for(var i=0; i<week.tue.length; i++) {
+               items.push(week.tue[i]);
+            }
+             break;
+        case 3: //수요일
+            for(var i=0; i<week.wed.length; i++) {
+                items.push(week.wed[i]);
+            }
+            break;
+        case 4: //목요일
+            for(var i=0; i<week.thu.length; i++) {
+                items.push(week.thu[i]);
+            }
+            break;
+        case 5: //금요일
+            for(var i=0; i<week.fri.length; i++) {
+               items.push(week.fri[i]);
+            }
+            break;
+        case 6: //토요일
+            for(var i=0; i<week.sat.length; i++) {
+                items.push(week.sat[i]);
+            }
+            break;
+    }
+}
+
+function Init() {
+    var date = new Date();
+    var today = [ date.getFullYear(), date.getMonth(), date.getDate()];
+
+    if(today_date === [] || (today_date[0] != today[0] || today_date[1] != today[1] || today_date[2] != today[2])) {
+        today_date = today;
+        localStorage.setItem('today_date', JSON.stringify(today_date));
+        listInit();
+    }
+    else {
+        //주간 리스트 추가 X
+    }
+}
 //EVENT LISTENERS
 addItems.addEventListener('submit',addItem);
 toDoList.addEventListener('click',toggle);
 
 displayDate();
+Init();
 populateList(items, toDoList);
