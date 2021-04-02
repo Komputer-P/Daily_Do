@@ -171,6 +171,7 @@ function Init() {
 
     if(today_date === [] || (today_date[0] != today[0] || today_date[1] != today[1] || today_date[2] != today[2])) {
         today_date = today;
+        items = [];
         localStorage.setItem('today_date', JSON.stringify(today_date));
         listInit();
     }
