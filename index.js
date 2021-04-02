@@ -6,49 +6,49 @@ week = {
     sun : [
         { content: "독서: 2030 축의 전환", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false },
+        { content: "프로그래밍: Daily Do 개발", done: false },
         { content: "동아리: 웹 백엔드 스터디", done: false }
     ],
     mon : [
         { content: "운동: 맨몸운동", done: false },
-        { content: "독서: 2030 축의 전환", done: false },
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false },
+        { content: "독서: 2030 축의 전환", done: false }
     ],
     tue : [
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false }
     ],
     wed : [
         { content: "운동: 맨몸운동", done: false },
-        { content: "독서: 2030 축의 전환", done: false },
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false },
+        { content: "독서: 2030 축의 전환", done: false }
     ],
     thu : [
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false }
     ],
     fri : [
         { content: "운동: 맨몸운동", done: false },
-        { content: "독서: 2030 축의 전환", done: false },
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false },
+        { content: "독서: 2030 축의 전환", done: false }
     ],
     sat : [
         { content: "독서: 2030 축의 전환", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: To Do, Daily Do 개발", done: false }
+        { content: "프로그래밍: Daily Do 개발", done: false }
     ]
 }
 
@@ -56,6 +56,7 @@ const toDoList = document.querySelector('.to-do-list');
 const addItems = document.querySelector('.add-items');
 
 const dateDisplay = document.querySelector('.date');
+const navigators = document.querySelectorAll('.navigator');
 
 //FUNCTIONS
 function addItem(e) {
@@ -177,9 +178,38 @@ function Init() {
         //주간 리스트 추가 X
     }
 }
+
+function scroll_navigation() {
+    if(this.classList.contains("to_today")) {
+        window.scroll({
+            behavior: 'smooth',
+            left: 0,
+            top: 0
+        });
+    } else if(this.classList.contains("to_day_setting")) {
+        element_to_scroll = document.querySelector('.day_setting');
+        scroll_to(element_to_scroll);
+    } else if(this.classList.contains("to_weekly")) {
+        element_to_scroll = document.querySelector('.weekly');
+        scroll_to(element_to_scroll);
+    } else if(this.classList.contains("to_preference")) {
+        element_to_scroll = document.querySelector('.preference');
+        scroll_to(element_to_scroll);
+    }
+}
+
+function scroll_to(element_to_scroll) {
+    window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: element_to_scroll.offsetTop - parseInt(getComputedStyle(element_to_scroll).marginTop)
+    });
+}
+
 //EVENT LISTENERS
 addItems.addEventListener('submit',addItem);
 toDoList.addEventListener('click',toggle);
+navigators.forEach(navigator => navigator.addEventListener('click', scroll_navigation));
 
 displayDate();
 Init();

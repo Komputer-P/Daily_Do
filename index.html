@@ -12,15 +12,15 @@
     <body>
         <nav class="navigation">
             <ul>
-                <li><p>오늘</p></li>
-                <li><p>주간</p></li>
-                <li><a href="https://komputer-p.github.io/Portfolio/" id="logo">&pi;</a></li>
-                <li><p>월간</p></li>
-                <li><p>설정</p></li>
+                <li class="navigator to_today"><a>오늘</a></li>
+                <li class="navigator to_day_setting"><a>요일</a></li>
+                <li><a href="https://komputer-p.github.io/Portfolio/" id="logo" target="_blank">&pi;</a></li>
+                <li class="navigator to_weekly"><a>주간</a></li>
+                <li class="navigator to_preference"><a>설정</a></li>
             </ul>
         </nav>
 
-        <div class="today">
+        <div class="component today">
             <h1>오늘 할 일은?</h1>
             <p class="date"></p>
             <div class="main">
@@ -34,37 +34,85 @@
                     </ul>
                     <form class="add-items">
                         <span>+</span>
-                        <input type="text" name="item" placeholder="할 일 적기" autocomplete="off" required >
+                        <input type="text" name="item" placeholder=" 할 일 적기" autocomplete="off" required >
                         <input type="submit" value="추가">
                     </form>
                 </div>
             </div>
+            <p style="color: gray">요일별로 할 일이 자동으로 갱신됩니다!</p>
         </div>
 
-        <p style="color: gray">요일별로 할 일이 자동으로 갱신됩니다!</p>
-        <!--
-        <div class="weekly">
-            <h1>주간 할 일 설정</h1>
-            <p class="date"></p>
+        <div class="component weekly">
+            <h1>주간 할 일</h1>
             <div class="main">
                 <div class="title">
-                    <h2>금요일 목록</h2>
+                    <h2>목록</h2>
                 </div>
                 <p></p>
                 <div class="content">
-                    <ul class="to-do-list week-to-do">
+                    <ul class="to-do-list">
                         <li>가져오는 중...</li>
                     </ul>
-                    <form class="add-items add-week-items">
+                    <!--
+                    <form class="add-items">
                         <span>+</span>
-                        <input type="text" name="item" placeholder="할 일 적기" autocomplete="off" required >
+                        <input type="text" name="item" placeholder=" 할 일 적기" autocomplete="off" required >
                         <input type="submit" value="추가">
                     </form>
+                    -->
                 </div>
             </div>
+            <p style="color: gray">요일별로 할 일을 설정해주세요!</p>
         </div>
-        -->
+
+        <div class="component day_setting">
+            <h1>요일별 할 일 설정</h1>
+            <div class="main">
+                <div class="title">
+                    <h2>목록</h2>
+                </div>
+                <p></p>
+                <div class="content">
+                    <ul class="to-do-list">
+                        <li>가져오는 중...</li>
+                    </ul>
+                    <!--
+                    <form class="add-items">
+                        <span>+</span>
+                        <input type="text" name="item" placeholder=" 할 일 적기" autocomplete="off" required >
+                        <input type="submit" value="추가">
+                    </form>
+                    -->
+                </div>
+            </div>
+            <p style="color: gray">요일별로 할 일을 설정해주세요!</p>
+        </div>
+
+        <div class="component preference">
+            <h1>설정</h1>
+            <div class="main">
+                <div class="title">
+                    <h2>기본</h2>
+                </div>
+                <p></p>
+                <div class="content">
+
+                </div>
+                <div class="title">
+                    <h2>기타</h2>
+                </div>
+                <p></p>
+                <div class="content">
+
+                </div>
+            </div>
+            <p style="color: gray">다양한 설정들이 있습니다!</p>
+        </div>
         
+        <footer class="bottom">
+            <p>ⓒ 2021 Kevin.P, All rights reserved.<br>This Website is made <b>ONLY</b> with <b>HTML, CSS</b>, and <b>Vanilla Javascript</b></p>
+        </footer>
+
         <script src="index.js"></script>
     </body>
 </html>

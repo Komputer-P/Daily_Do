@@ -1,2 +1,2 @@
 # Daily_Do
-Daily Do WebService
+Daily Do 웹 서비스
