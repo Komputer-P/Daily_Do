@@ -39,7 +39,7 @@ h1 {
     text-align: center;
 
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto;
 
     margin: 0px;
     align-items: center;
@@ -125,7 +125,7 @@ h1 {
     margin: -2px 8px 0 0;
     text-align: center;
     vertical-align: middle;
-    background: #F6F6F6;
+    background: transparent;
     border: 0.15rem solid rgba(51,51,51,0.5);
     border-radius: 2%;
 }
@@ -171,7 +171,7 @@ h1 {
     font-size: 1rem;
     color: #333333;
     border: none;
-    background: #F6F6F6;
+    background: transparent;
     margin: auto;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -180,7 +180,7 @@ h1 {
 
 .main .content .add-items input[type="submit"] {
     border: none;
-    background-color: #F6F6F6;
+    background-color: transparent;
     color: gray;
     padding: 0px;
     font-size: 1rem;
@@ -199,6 +199,91 @@ h1 {
 /* Weekly */
 
 /* Prefernece */
+
+.preference .general {
+    width: 70%;
+    margin: auto;
+}
+
+.preference .main .content li {
+    border-bottom: none;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #333333;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #333333;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 17px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .preference ul {
+    list-style: none;
+  }
+
+  .preference .text {
+    vertical-align: middle;
+    margin-right: 1%;
+}
+
+.preference label {
+   vertical-align: middle;
+}
 
 /* Footer */
 footer {

@@ -13,9 +13,7 @@
         <nav class="navigation">
             <ul>
                 <li class="navigator to_today"><a>오늘</a></li>
-                <li class="navigator to_day_setting"><a>요일</a></li>
                 <li><a href="https://komputer-p.github.io/Portfolio/" id="logo" target="_blank">&pi;</a></li>
-                <li class="navigator to_weekly"><a>주간</a></li>
                 <li class="navigator to_preference"><a>설정</a></li>
             </ul>
         </nav>
@@ -41,7 +39,7 @@
             </div>
             <p style="color: gray">요일별로 할 일이 자동으로 갱신됩니다!</p>
         </div>
-
+        <!--
         <div class="component weekly">
             <h1>주간 할 일</h1>
             <div class="main">
@@ -53,13 +51,13 @@
                     <ul class="to-do-list">
                         <li>가져오는 중...</li>
                     </ul>
-                    <!--
+                    
                     <form class="add-items">
                         <span>+</span>
                         <input type="text" name="item" placeholder=" 할 일 적기" autocomplete="off" required >
                         <input type="submit" value="추가">
                     </form>
-                    -->
+                    
                 </div>
             </div>
             <p style="color: gray">요일별로 할 일을 설정해주세요!</p>
@@ -76,18 +74,18 @@
                     <ul class="to-do-list">
                         <li>가져오는 중...</li>
                     </ul>
-                    <!--
+                    
                     <form class="add-items">
                         <span>+</span>
                         <input type="text" name="item" placeholder=" 할 일 적기" autocomplete="off" required >
                         <input type="submit" value="추가">
                     </form>
-                    -->
+                    
                 </div>
             </div>
             <p style="color: gray">요일별로 할 일을 설정해주세요!</p>
         </div>
-
+        -->
         <div class="component preference">
             <h1>설정</h1>
             <div class="main">
@@ -96,31 +94,24 @@
                 </div>
                 <p></p>
                 <div class="content">
-
-                </div>
-                <div class="title">
-                    <h2>기타</h2>
-                </div>
-                <p></p>
-                <div class="content">
-
+                    <ul class="general">
+                        <li class="theme">
+                            <span class="text">다크 테마로 변경</span>
+                            <label class="switch">
+                                <input type="checkbox" name="theme">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <p style="color: gray">다양한 설정들이 있습니다!</p>
         </div>
         
-        <footer class="bottom">
-            <p>ⓒ 2021 Kevin.P, All rights reserved.<br>This Website is made <b>ONLY</b> with <b>HTML, CSS</b>, and <b>Vanilla Javascript</b></p>
+        <footer class="footer">
+            <p>ⓒ 2021 Kevin.P, All rights reserved.</p>
         </footer>
 
         <script src="index.js"></script>
     </body>
 </html>
-
-<!--
-● Daily Do : 생산성 앱/웹, 개인 용도로, 매일(요일)마다 하는 일들을 날짜가 지나면 자동으로 체크방식 형식으로 To Do List에 올려주고, To Do list 위젯으로 오늘 할 일 체크하면서 쓸 수 있는 앱, 그 전날 사용자가 지정한 시간에 내일 일정 알림을 줘서 내일 일정 확인받고 최종 일정 내일 To Do로 Push. (필요한 것: 위젯 만들기, 요일별 To Do List 만들기, 날짜가 바뀌면 자동으로 체크박스 To Do list, 위젯 생성, 사용자가 원하는 시간에 최종 일정 confirm 받기 설정 등, 할 일들을 Tree 형식으로 세부 할 일들도 체크할 수 있도록)
-+ 뽀모도로 기법 활용해서 시간 재는 기능
-+ localstorage 참조
-+ 백엔드와 연결, AWS 활용해서 웹사이트 생성
-+ 로그인 후 DB에 데이터 저장
--->

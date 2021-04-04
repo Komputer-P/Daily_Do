@@ -4,9 +4,9 @@ var items = JSON.parse(localStorage.getItem('items')) || [];
 var week = JSON.parse(localStorage.getItem('weeks')) || [];
 week = {
     sun : [
-        { content: "독서: 2030 축의 전환", done: false },
+        { content: "독서: 개발 관련 서적", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false },
+        { content: "프로그래밍: 웹서비스 개발", done: false },
         { content: "동아리: 웹 백엔드 스터디", done: false }
     ],
     mon : [
@@ -14,41 +14,41 @@ week = {
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false },
-        { content: "독서: 2030 축의 전환", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false },
+        { content: "독서: 개발 관련 서적", done: false }
     ],
     tue : [
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false }
     ],
     wed : [
         { content: "운동: 맨몸운동", done: false },
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false },
-        { content: "독서: 2030 축의 전환", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false },
+        { content: "독서: 개발 관련 서적", done: false }
     ],
     thu : [
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false }
     ],
     fri : [
         { content: "운동: 맨몸운동", done: false },
         { content: "대학: 강의 수강", done: false },
         { content: "대학: 과제/프로젝트 수행", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false },
-        { content: "독서: 2030 축의 전환", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false },
+        { content: "독서: 개발 관련 서적", done: false }
     ],
     sat : [
-        { content: "독서: 2030 축의 전환", done: false },
+        { content: "독서: 개발 관련 서적", done: false },
         { content: "프로그래밍: 알고리즘 풀이", done: false },
-        { content: "프로그래밍: Daily Do 개발", done: false }
+        { content: "프로그래밍: 웹서비스 개발", done: false }
     ]
 }
 
@@ -58,7 +58,21 @@ const addItems = document.querySelector('.add-items');
 const dateDisplay = document.querySelector('.date');
 const navigators = document.querySelectorAll('.navigator');
 
+const themeToggle = document.querySelector('input[name=theme]');
+var dark_theme = false;
+
+const body = document.querySelector('body');
+const mains = document.querySelectorAll('.main');
+const titles = document.querySelectorAll('.title');
+const paragraphs = document.querySelectorAll('.main > p')
+const navigation = document.querySelector('.navigation');
+const footer = document.querySelector('.footer');
+
 //FUNCTIONS
+function updateItems() {
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
 function addItem(e) {
     e.preventDefault();
     
@@ -67,9 +81,8 @@ function addItem(e) {
         content : text,
         done : false
     }
-    
     items.push(item);
-    localStorage.setItem('items', JSON.stringify(items));
+    updateItems();
     populateList(items, toDoList);
     this.reset();
 }  
@@ -108,7 +121,7 @@ function toggle(e) {
         return;
     }
 
-    localStorage.setItem('items',JSON.stringify(items));
+    updateItems();
     populateList(items, toDoList);
 }
 
@@ -165,15 +178,17 @@ function listInit() {
     }
 }
 
-function Init() {
+function initLists() {
     var date = new Date();
-    var today = [ date.getFullYear(), date.getMonth(), date.getDate()];
+    var today = [ date.getFullYear(), date.getMonth(), date.getDate() ];
 
     if(today_date === [] || (today_date[0] != today[0] || today_date[1] != today[1] || today_date[2] != today[2])) {
+        console.log("initialized");
         today_date = today;
         items = [];
         localStorage.setItem('today_date', JSON.stringify(today_date));
         listInit();
+        updateItems();
     }
     else {
         //주간 리스트 추가 X
@@ -187,13 +202,16 @@ function scroll_navigation() {
             left: 0,
             top: 0
         });
-    } else if(this.classList.contains("to_day_setting")) {
+    }
+    /* else if(this.classList.contains("to_day_setting")) {
         element_to_scroll = document.querySelector('.day_setting');
         scroll_to(element_to_scroll);
     } else if(this.classList.contains("to_weekly")) {
         element_to_scroll = document.querySelector('.weekly');
         scroll_to(element_to_scroll);
-    } else if(this.classList.contains("to_preference")) {
+        
+    } */
+    else if(this.classList.contains("to_preference")) {
         element_to_scroll = document.querySelector('.preference');
         scroll_to(element_to_scroll);
     }
@@ -207,11 +225,34 @@ function scroll_to(element_to_scroll) {
     });
 }
 
+function toggleTheme() {
+    dark_theme = !dark_theme;
+
+    if(dark_theme) {
+        body.style.backgroundColor = "#121212";
+        body.style.color = "#ffffff";
+        mains.forEach(main => main.style.backgroundColor = "#1D1D1D" );
+        titles.forEach(main => main.style.color = "#ffffff" );
+        paragraphs.forEach(paragraph => paragraph.style.borderBottom = "0.1rem solid #ffffff");
+        navigation.style.backgroundColor = "rgba(18,18,18,0.7)";
+        footer.style.backgroundColor = "#121212";
+    } else {
+        body.style.backgroundColor = "#FBFBFD";
+        body.style.color = "#333333";
+        mains.forEach(main => main.style.backgroundColor = "#F6F6F6" );
+        titles.forEach(main => main.style.color = "#1D1D1F" );
+        paragraphs.forEach(paragraph => paragraph.style.borderBottom = "0.1rem solid #86868B");
+        navigation.style.backgroundColor = "#333333";
+        footer.style.backgroundColor = "#F2F2F2";
+    }
+}
+
 //EVENT LISTENERS
 addItems.addEventListener('submit',addItem);
 toDoList.addEventListener('click',toggle);
 navigators.forEach(navigator => navigator.addEventListener('click', scroll_navigation));
+themeToggle.addEventListener('click',toggleTheme);
 
 displayDate();
-Init();
+initLists();
 populateList(items, toDoList);
